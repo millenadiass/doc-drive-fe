@@ -10,7 +10,7 @@ import { CadastroUser } from '../model/cadastro-user';
 })
 export class CadastroService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }''
 
   public Cadastrar(cadastroUser: CadastroUser): Promise<boolean> {
     return this.http.post(environment.url_api + "user/signup", cadastroUser).toPromise().then(data => {
