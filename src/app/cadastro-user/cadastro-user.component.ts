@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CadastroService } from '../cadastro/cadastro.service';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-cadastro-user',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private CadastroService:CadastroService) { }
 
   ngOnInit() {
   }
 
+  public cadastrar_click()
+  {
+     let info = new User();
+     info.DsMail = "milleenas.dias@gmail.com";
+     info.DsPassword = "millenateste"; 
+     info.DsUser = "Millena Dias da Silva";
+ 
+    this.CadastroService.Cadastrar(info)
+  }
+ 
 }

@@ -2,19 +2,19 @@
     <div id="cadastroModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog"> 
         <div class="modal-content" id="divconteudo"> 
-          <div class="modal-header">
-            <img src="resources\icons\icon.png" width=60 height=40>
-            <h5 class="text-center">LOGIN</h5>
+          <div class="modal-header d-flex justify-content-center">
+            <img src="assets\icons\doc-drive-icon.svg" width=60 height=40 >
+            <!-- <h5 class="text-center">LOGIN</h5> -->
           </div>
           <div class="modal-body">  
             <div class="form-group">
-              <input type="text" class="form-control" id="formGroupExampleInput" width="100px" placeholder="E-mail">
+              <input type="text" class="form-control" id="txtDsEmailUser" width="100px" placeholder="E-mail">
               <br>
-              <input type="password" class="form-control" id="formGroupExampleInputestet" width="100px" placeholder="Senha">
+              <input type="password" class="form-control" id="txtDsSenhaUser" width="100px" placeholder="Senha">
   
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-success">Entrar</button>          
+                <button type="button" (click)="login_click()" class="btn btn-success">Entrar</button>          
             </div>
           </div>
         </div>

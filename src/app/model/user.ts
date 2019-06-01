@@ -1,5 +1,6 @@
 export class User{
-    public dsUser:string;
-    public dsMail:string;
+    public DsUser:string;
+    public DsMail:string;
+    public DsPassword:string;
     
 }

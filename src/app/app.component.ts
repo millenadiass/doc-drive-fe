@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CadastroService } from './cadastro/cadastro.service';
-import { CadastroUser } from './model/cadastro-user';
+import { User } from './model/user';
 
 
 
@@ -17,10 +17,10 @@ export class AppComponent {
  }
  public teste_click()
  {
-    let info = new CadastroUser();
-    info.dsMail = "milleena.dias@gmail.com";
-    info.dsPassword = "millenateste"; 
-    info.dsUser = "Millena Dias da Silva";
+    let info = new User();
+    info.DsMail = "milleena.dias@gmail.com";
+    info.DsPassword = "millenateste"; 
+    info.DsUser = "Millena Dias da Silva";
 
    this.CadastroService.Cadastrar(info)
  }
