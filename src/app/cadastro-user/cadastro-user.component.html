@@ -1,26 +1,48 @@
-<form class="form col-md-12" id="formDados" runat="server">
-  <div id="cadastroModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog"> 
-      <div class="modal-content" id="divconteudo"> 
-        <div class="modal-header d-flex justify-content-center">
-          <img src="assets\icons\doc drive icon.PNG" width=60 height=40 >
-        
-        </div>
-        <div class="modal-body">  
-          <div class="form-group">
-            Nome:
-            <input type="text" class="form-control" id="txtDsNomeUser" width="100px" placeholder="">
-            E-mail:
-            <input type="text" class="form-control" id="txtDsEmailUser" width="100px" placeholder="mail@mail.com">
-            Senha:
-            <input type="password" class="form-control" id="txtDsSenhaUser" width="100px" placeholder="">
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <form class="form col-md-12" id="formDados" runat="server">
+    <div id="cadastroModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" id="divconteudo">
+          <div class="modal-header d-flex justify-content-center">
+            <h5>Cadastro</h5>
           </div>
-          <div class="form-group d-flex justify-content-end">
-              <button type="button" (click)="cadastrar_click()" class="btn btn-success">Cadastrar</button>          
+          <div class="modal-body">
+            <div class="form-group">
+              Nome:
+              <input type="text" [formControl]="nomeField" class="form-control" id="txtDsNomeUser" width="100px"
+                placeholder="">
+              <div *ngIf="nomeField.invalid && (nomeField.dirty || nomeField.touched)" class="alert alert-danger">
+                <div *ngIf="nomeField.errors.required">
+                  Preenchimento obrigatório.
+                </div>
+              </div>
+              E-mail:
+              <input type="text" [formControl]="emailField" class="form-control" id="txtDsEmailUser" width="100px"
+                placeholder="mail@mail.com">
+              <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="alert alert-danger">
+                <div *ngIf="emailField.errors.required">
+                  Preenchimento obrigatório.
+                </div>
+              </div>
+              Senha:
+              <input type="password" [formControl]="passwordField" class="form-control" id="txtDsSenhaUser"
+                width="100px" placeholder="" email>
+            </div>
+            <div class="form-group d-flex justify-content-end">
+              <button type="button" [disabled]="nomeField.invalid && emailField.invalid && passwordField.invalid" (click)="cadastrar_click()"
+                class="btn btn-success">Cadastrar</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  
-  </div>
-</form>
+  </form>
+</body>
+
+</html>

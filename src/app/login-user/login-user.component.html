@@ -1,25 +1,30 @@
-<form class="form col-md-12 center-block" id="formDados" runat="server">
-    <div id="cadastroModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog"> 
-        <div class="modal-content" id="divconteudo"> 
-          <div class="modal-header d-flex justify-content-center">
-            <img src="assets\icons\doc-drive-icon.svg" width=60 height=40 >
-            <!-- <h5 class="text-center">LOGIN</h5> -->
-          </div>
-          <div class="modal-body">  
-            <div class="form-group">
-              <input type="text" class="form-control" id="txtDsEmailUser" width="100px" placeholder="E-mail">
-              <br>
-              <input type="password" class="form-control" id="txtDsSenhaUser" width="100px" placeholder="Senha">
-  
-            </div>
-            <div class="form-group">
-                <button type="button" (click)="login_click()" class="btn btn-success">Entrar</button>          
-            </div>
-          </div>
+<div class="container-fluid" style="height: 89vh;       background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+  background-image: url('https://www.qicloudexperience.com.br/wp-content/uploads/2017/02/entenda-porque.jpg');
+">
+  <div class="row">
+    <div class="col-4" style="    margin-top: 5%;">
+      <div class="card text-center">
+        <div class="card-header">
+          Login
         </div>
-  
+        <div class="card-body">
+          <div class="form-group">
+            <input type="text" [formControl]="emailField" class="form-control" id="txtDsEmailUser" width="100px"
+              placeholder="E-mail">
+            <br>
+            <input type="password" [formControl]="passwordField" class="form-control" id="txtDsSenhaUser" width="100px"
+              placeholder="Senha">
+            <br>
+            <a [routerLink]="['/cadastro']">Cadastrar-se</a>
+          </div>
+
+        </div>
+        <div class="card-footer text-muted">
+          <button type="button" (click)="login_click()" class="btn btn-success">Entrar</button>
+        </div>
       </div>
-    
     </div>
-  </form>
+  </div>
+</div>

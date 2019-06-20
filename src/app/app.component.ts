@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { CadastroService } from './cadastro/cadastro.service';
 import { User } from './model/user';
+import { CadastroUserService } from './cadastro-user/cadastro-user.service';
 
 
 
@@ -12,15 +12,15 @@ import { User } from './model/user';
 export class AppComponent {
   title = 'doc-drive-fe';
 
- constructor(private CadastroService:CadastroService){
+ constructor(private CadastroService:CadastroUserService){
 
  }
  public teste_click()
  {
     let info = new User();
-    info.DsMail = "milleena.dias@gmail.com";
-    info.DsPassword = "millenateste"; 
-    info.DsUser = "Millena Dias da Silva";
+    info.Mail = "milleena.dias@gmail.com";
+    info.Password = "millenateste"; 
+    info.UserName = "Millena Dias da Silva";
 
    this.CadastroService.Cadastrar(info)
  }

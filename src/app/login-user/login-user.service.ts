@@ -10,8 +10,8 @@ export class LoginUserService {
   constructor(private http: HttpClient) { }
 
   public Login(DsEmail:string, DsSenha:string): Promise<boolean> {
-    let Headers = new HttpHeaders({user:DsEmail,password:DsSenha});
-    return this.http.post(environment.url_api + "user/login",null, {headers:Headers}).toPromise().then(data => {
+    let Headers = new HttpHeaders({mail:DsEmail,password:DsSenha});
+    return this.http.post(environment.url_api + "user/signin",null, {headers:Headers}).toPromise().then(data => {
       console.log("User Login: " + data);
       return true;
     }).catch(err => {

@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Data } from '@angular/router';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { User } from '../model/user';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CadastroService {
+export class CadastroUserService {
 
   constructor(private http: HttpClient) { }
 
