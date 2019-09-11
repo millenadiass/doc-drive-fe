@@ -12,6 +12,7 @@ import { CadastroUserComponent } from './cadastro-user/cadastro-user.component';
 import { RouterModule } from '@angular/router';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { HomeComponent } from './home/home.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,11 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule, 
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass: HttpInterceptorService,multi:true}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

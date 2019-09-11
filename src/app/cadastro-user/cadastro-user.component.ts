@@ -4,14 +4,16 @@ import { User } from '../model/user';
 import { CadastroUserService } from './cadastro-user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { faCloud } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-cadastro-user',
   templateUrl: './cadastro-user.component.html',
-  styleUrls: ['./cadastro-user.component.css']
+  styleUrls: ['./cadastro-user.component.scss']
 })
 export class CadastroUserComponent implements OnInit {
-
+  faCloud = faCloud;
   constructor(private CadastroService: CadastroUserService, private router: Router) {
   }
 

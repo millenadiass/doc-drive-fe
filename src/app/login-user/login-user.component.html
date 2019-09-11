@@ -1,40 +1,32 @@
-<div class="container-fluid" style="height: 100%;position: fixed;       background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-  background-image: url('http://marcusmarques.com.br/wp-content/uploads/2018/05/imagem-empresarial.jpg');
-">
-  <div class="row">
-    <div class="col-4" style="margin-top: 8%; margin-left:5%;">
-      <div class="card text-center">
-        <div class="card-header">
-          Login
-        </div>
-        <div class="card-body">
-          <div class="form-group">
-            <input type="text" [formControl]="emailField" class="form-control" id="txtDsEmailUser" width="100px"
-              placeholder="E-mail">
-              <div *ngIf="emailField.invalid && (emailField.dirty || emailField.touched)" class="alert alert-danger">
-                <div *ngIf="emailField.errors.required">
-                  Preenchimento obrigatório.
-                </div>
-              </div>
-            <br>
-            <input type="password" [formControl]="passwordField" class="form-control" id="txtDsSenhaUser" width="100px"
-              placeholder="Senha">
-              <div *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched)" class="alert alert-danger">
-                <div *ngIf="passwordField.errors.required">
-                  Preenchimento obrigatório.
-                </div>
-              </div>
-            <br>
-            <a [routerLink]="['/cadastro']">Cadastrar-se</a>
-          </div>
-
-        </div>
-        <div class="card-footer text-muted">
-          <button type="button" [disabled]="emailField.invalid || passwordField.invalid" (click)="login_click()" class="btn btn-success">Entrar</button>
-        </div>
+<div class="cover-dark form-dark">
+  <form>
+    <h2 class="sr-only">Login Form</h2>
+    <div class="illustration">
+      <fa-icon [icon]="faCloud"></fa-icon>
+      <a class="subtittle">DocDrive</a>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text"
+        [ngClass]="{ 'is-invalid': emailField.invalid && (emailField.dirty || emailField.touched) && emailField.errors.required}"
+        [formControl]="emailField" name="mail" placeholder="Email">
+      <div class="is-invalid-feedback"
+        *ngIf="emailField.invalid && (emailField.dirty || emailField.touched) && emailField.errors.required">
+        E-mail é obrigatório
       </div>
     </div>
-  </div>
+    <div class="form-group">
+      <input class="form-control" type="password"
+        [ngClass]="{ 'is-invalid':passwordField.invalid && (passwordField.dirty || passwordField.touched) && passwordField.errors.required}"
+        [formControl]="passwordField" name="password" placeholder="Senha">
+      <div class="is-invalid-feedback"
+        *ngIf="passwordField.invalid && (passwordField.dirty || passwordField.touched) && passwordField.errors.required">
+        Senha é obrigatória
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" [disabled]="emailField.invalid || passwordField.invalid"
+        (click)="login_click()">Entrar</button>
+    </div>
+    <a class="login" [routerLink]="['/cadastro']">Cadastrar-se</a>
+  </form>
 </div>

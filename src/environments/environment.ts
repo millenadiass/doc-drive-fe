@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url_api: "http://DocDriveApi-env-1.safwhcya9x.us-east-1.elasticbeanstalk.com/api/"
+  url_api: "http://localhost:5000/api/"
 };
 
 /*

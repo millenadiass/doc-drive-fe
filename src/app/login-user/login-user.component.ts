@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { LoginUserService } from './login-user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { faCloud } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
-  styleUrls: ['./login-user.component.css']
+  styleUrls: ['./login-user.component.scss']
 })
 export class LoginUserComponent implements OnInit {
 
   constructor(private LoginService: LoginUserService, private router: Router) { }
-
+  faCloud = faCloud;
   emailField = new FormControl('', [Validators.required]);
   passwordField = new FormControl('', [Validators.required]);
 
