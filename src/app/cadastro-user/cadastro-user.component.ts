@@ -1,45 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-
-import { User } from '../model/user';
-import { CadastroUserService } from './cadastro-user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-cadastro-user',
   templateUrl: './cadastro-user.component.html',
   styleUrls: ['./cadastro-user.component.scss']
 })
-export class CadastroUserComponent implements OnInit {
+export class CadastroUserComponent {
   faCloud = faCloud;
-  constructor(private CadastroService: CadastroUserService, private router: Router) {
-  }
-
-  ngOnInit() {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   nomeField = new FormControl('', [Validators.required]);
+  sobrenomeField = new FormControl('', [Validators.required]);
   emailField = new FormControl('', [Validators.required]);
   passwordField = new FormControl('', [Validators.required]);
 
   public cadastrar_click() {
-
-    let info = new User();
-
-    info.UserName = this.nomeField.value;
-    info.Mail = this.emailField.value;
-    info.Password = this.passwordField.value;
-
-    this.CadastroService.Cadastrar(info).then(result => {
-      if (result) {
-        this.router.navigate(['/login'])
-      }
-      else {
-        alert('error');
-      }
-    })
+    this.userService.register(this.emailField.value, this.passwordField.value, this.nomeField.value, this.sobrenomeField.value)
+      .toPromise().then(result => {
+        if (result)
+          this.router.navigate(["/login"]);
+      }).catch(error => alert(error));
 
   }
 

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from './model/user';
-import { CadastroUserService } from './cadastro-user/cadastro-user.service';
-
-
+import { ConfigService } from './shared/utils/config.service'
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +8,9 @@ import { CadastroUserService } from './cadastro-user/cadastro-user.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'doc-drive-fe';
 
- constructor(private CadastroService:CadastroUserService){
-
- }
- public teste_click()
- {
-    let info = new User();
-    info.Mail = "milleena.dias@gmail.com";
-    info.Password = "millenateste"; 
-    info.UserName = "Millena Dias da Silva";
-
-   this.CadastroService.Cadastrar(info)
- }
+  constructor(private configService: ConfigService) {
+    configService.setApiURI(environment.url_api);
+  }
 }
 

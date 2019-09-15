@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginUserService } from './login-user.service';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-login-user',
@@ -11,7 +11,7 @@ import { faCloud } from '@fortawesome/free-solid-svg-icons';
 })
 export class LoginUserComponent implements OnInit {
 
-  constructor(private LoginService: LoginUserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
   faCloud = faCloud;
   emailField = new FormControl('', [Validators.required]);
   passwordField = new FormControl('', [Validators.required]);
@@ -19,14 +19,10 @@ export class LoginUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  public  login_click(){
-    this.LoginService.Login(this.emailField.value, this.passwordField.value).then(result => {
-      if (result) {
+  public login_click() {
+    this.userService.login(this.emailField.value, this.passwordField.value).toPromise().then(result => {
+      if (result)
         this.router.navigate(['/home'])
-      }
-      else {
-        alert('error');
-      }
-    })
+    }).catch(error => alert(error));
   }
 }

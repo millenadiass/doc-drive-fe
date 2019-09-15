@@ -15,10 +15,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
 		let curHeaders = request.headers;
 		curHeaders = curHeaders.append('Access-Control-Allow-Origin', '*');
-		curHeaders = curHeaders.append('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-		curHeaders = curHeaders.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-
+		curHeaders = curHeaders.append('Content-Type', 'application/json');
 
 		request = request.clone({
 			headers: curHeaders
@@ -31,7 +28,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 						console.log(event.status);
 					}
 					else
-					console.log(event)
+						console.log(event)
 				}, error => {
 					// http response status code
 					console.log("----response error----");
