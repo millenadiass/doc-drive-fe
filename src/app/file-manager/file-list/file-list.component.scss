@@ -1,0 +1,7 @@
+.folder {
+  padding: 10px;
+  transition: all 0.2s ease-in-out;
+}
+.folder:hover {
+  transform: scale(1.1);
+}

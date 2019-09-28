@@ -1,0 +1,4 @@
+<div *ngFor="let file of files" class="col-lg-1 col-md-2 col-sm-4 col-6 folder d-flex justify-content-center">
+  <div app-file-item class="card text-center" (OnItemClick)="itemClick($event)" style="width: 175px;" [file]="file">
+  </div>
+</div>

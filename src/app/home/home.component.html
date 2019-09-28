@@ -1,3 +1,2 @@
-
-        <div class="text-center col-md-12 col-md-offset-4" style="margin-top: 20%; font-weight: bold;">EM PROGRESSO...</div>
-    
+<app-file-manager #fileManager [files]="lstFiles" (LoadParent)="loadParent($event)"
+    (LoadChildren)="loadChildren($event)"></app-file-manager>

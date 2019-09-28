@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule , FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import {ROUTES} from './app.routes'
+import { ROUTES } from './app.routes'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { FileManagerModule } from './file-manager/file-manager.module';
 
 @NgModule({
   declarations: [
@@ -28,13 +29,14 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
-    ReactiveFormsModule, 
+    ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
+    FileManagerModule, 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass: HttpInterceptorService,multi:true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 }
