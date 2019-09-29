@@ -1,7 +1,9 @@
 <div class="container-fluid ">
   <div class="row d-flex h-100" style="background-color: grey">
     <div class="col-12 ">
-      <div *ngIf="parentFolder; else elseBlock"><fa-icon (click)="goBack()" [icon]="faArrowLeft"></fa-icon></div>
+      <div *ngIf="parentFolder; else elseBlock">
+        <fa-icon (click)="goBack()" [icon]="faArrowLeft"></fa-icon> {{parentFolder.name}}
+      </div>
     </div>
   </div>
   <div class="row" app-file-list [files]="files" (OnItemClick)="itemClick($event)">

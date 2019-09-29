@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { File } from '../model/file';
-import { faFolder } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faFile } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-file-item,[app-file-item]',
   templateUrl: './file-item.component.html',
@@ -8,6 +8,7 @@ import { faFolder } from '@fortawesome/free-solid-svg-icons';
 })
 export class FileItemComponent implements OnInit {
   faFolder = faFolder;
+  faFile = faFile;
   @Input() file: File;
   @Output() OnItemClick = new EventEmitter<File>();
   constructor() { }
@@ -16,6 +17,7 @@ export class FileItemComponent implements OnInit {
   }
 
   itemClick() {
+    console.log(this.file);
     this.OnItemClick.emit(this.file);
   }
 }
