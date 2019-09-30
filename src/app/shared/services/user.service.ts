@@ -38,8 +38,7 @@ export class UserService extends BaseService {
         let body = JSON.stringify({ email, password, firstName, lastName });
         return this.http.post(`${this.baseUrl}/accounts`, body)
             .pipe(
-                map(res => true),
-                catchError(this.handleError));
+                map(res => true));
     }
 
     login(userName, password) {
@@ -50,8 +49,7 @@ export class UserService extends BaseService {
                     this.setAuthToken(res.auth_token);
                     this.loggedIn = true;
                     return true;
-                }),
-                catchError(this.handleError))
+                }))
     }
 
     logout() {
@@ -69,7 +67,6 @@ export class UserService extends BaseService {
                     this.setAuthToken(res.auth_token);
                     this.loggedIn = true;
                     return true;
-                }),
-                catchError(this.handleError));
+                }));
     }
 }

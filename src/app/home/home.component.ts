@@ -36,12 +36,22 @@ export class HomeComponent implements OnInit {
       }).catch(error => alert(error));
   }
 
-  loadParent() {
-    this.fileManager.parentFolder = null;
+  loadParent(file) {
+    this.fileManager.parentFolder = file.parentFolder;
     this.changeDetectorRef.detectChanges();
-    this.FolderServico.listarPastaRaiz()
-      .toPromise().then(result => {
-        this.lstFiles = result.map(item => item.toFileModel());
-      }).catch(error => alert(error));
+    if (file.parentFolder == null)
+      this.FolderServico.listarPastaRaiz()
+        .toPromise().then(result => {
+          this.lstFiles = result.map(item => item.toFileModel());
+        }).catch(error => alert(error));
+    else
+      this.FolderServico.listarPastasFilhas(file.parentFolder.id)
+        .toPromise().then(result => {
+          this.lstFiles = result.map(item => {
+            let folder = item.toFileModel()
+            folder.parentFolder = file;
+            return folder;
+          });
+        }).catch(error => alert(error));
   }
 }

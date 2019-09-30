@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 import { UserService } from '../shared/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-user',
@@ -23,6 +24,19 @@ export class LoginUserComponent implements OnInit {
     this.userService.login(this.emailField.value, this.passwordField.value).toPromise().then(result => {
       if (result)
         this.router.navigate(['/home'])
-    }).catch(error => alert(error));
+    }).catch(error => {
+      console.log(error)
+      if (error instanceof HttpErrorResponse) {
+        if (error.status >= 400 && error.status < 500) {
+          if (error.error)
+            if (error.error.login_failure)
+              alert("O usuário ou senha está inválido")
+            else
+              alert(error.message);
+        }
+        else
+          alert(error.message);
+      }
+    });
   }
 }

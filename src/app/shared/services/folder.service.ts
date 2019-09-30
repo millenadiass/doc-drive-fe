@@ -41,7 +41,7 @@ export class FolderService extends BaseService {
           })
         }
         return lstFolder;
-      }), catchError(this.handleError))
+      }))
   }
 
   listarPastasFilhas(pFolderId: number) {
@@ -67,8 +67,8 @@ export class FolderService extends BaseService {
             })
           }
           return lstFolder;
-        }),
-        catchError(this.handleError))
+        }))
+        
   }
 
 }
