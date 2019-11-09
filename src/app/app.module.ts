@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ContextMenuModule } from 'ngx-contextmenu';
 import { FileManagerModule } from './file-manager/file-manager.module';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FileManagerModule } from './file-manager/file-manager.module';
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
+    ContextMenuModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,

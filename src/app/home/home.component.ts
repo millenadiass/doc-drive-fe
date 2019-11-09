@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FolderService } from '../shared/services/folder.service';
 import { File } from '../file-manager/model/file';
 import { FileManagerComponent } from '../file-manager/file-manager.component';
+import { ContextMenuComponent } from 'ngx-contextmenu';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

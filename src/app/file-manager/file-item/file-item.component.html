@@ -1,4 +1,4 @@
-<div (click)="itemClick()">
+<div (click)="itemClick()" [contextMenu]="basicMenu">
   <div class="row justify-content-center">
     <fa-icon class="folderIcon" [icon]="faFolder"></fa-icon>
   </div>
@@ -6,3 +6,22 @@
     <a>{{file.name}}</a>
   </div>
 </div>
+<context-menu #Arquivo>
+  <ng-template contextMenuItem>
+    Item Opção 1
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem>
+    Item Opção 2
+  </ng-template>
+</context-menu>
+
+<context-menu #Pasta>
+  <ng-template contextMenuItem>
+    Item Opção 3
+  </ng-template>
+  <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem>
+    Item Opção 4
+  </ng-template>
+</context-menu>
