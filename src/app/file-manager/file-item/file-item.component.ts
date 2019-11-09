@@ -19,7 +19,6 @@ export class FileItemComponent implements OnInit {
 
   ngOnInit() {
   }
-
   itemClick() {
     console.log(this.file);
     this.OnItemClick.emit(this.file);

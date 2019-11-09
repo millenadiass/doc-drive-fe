@@ -1,10 +1,8 @@
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark " style="background-color:#1e2833;">
   <a class="navbar-brand" href="#">DocDrive</a>
-  <ul class="navbar-nav">
-    <li>
-      <!-- <a [routerLink]="['/cadastro']">Cadastro</a>  -->
-      <br>
-      <!-- <a [routerLink]="['/login']">Login</a> -->
+  <ul class="navbar-nav" *ngIf="userService.isLoggedIn()">
+    <li  class="text-white"> 
+        <fa-icon [icon]="faSignOutAlt" (click)="logout()"></fa-icon>
     </li>
   </ul>
 </nav>
