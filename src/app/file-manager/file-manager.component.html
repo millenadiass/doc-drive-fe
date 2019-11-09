@@ -2,8 +2,8 @@
   <div class="container-fluid ">
     <div class="row d-flex h-100" style="background-color: grey">
       <div class="col-12 ">
-        <div *ngIf="parentFolder; else elseBlock">
-          <fa-icon (click)="goBack()" [icon]="faArrowLeft"></fa-icon>
+        <div *ngIf="parentFolder; else elseBlock" style="padding: 10px;">
+          <fa-icon (click)="goBack()" [icon]="faArrowLeft"></fa-icon> {{parentFolder.name}}
         </div>
       </div>
     </div>
@@ -11,9 +11,7 @@
     </div>
   </div>
 </div>
-<ng-template #elseBlock>
-  <p> Pastas e Arquivos</p>
-</ng-template>
+
 
 <context-menu>
   <ng-template contextMenuItem>
@@ -24,3 +22,7 @@
     Bye
   </ng-template>
 </context-menu>
+
+<ng-template #elseBlock style="padding: 10px;">
+  <div style="padding: 10px;"> <span> Pastas e Arquivos</span></div>
+</ng-template>

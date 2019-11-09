@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { File } from '../model/file';
-import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import { ContextMenuComponent } from 'ngx-contextmenu';
+import { faFolder, faFile } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-file-item,[app-file-item]',
   templateUrl: './file-item.component.html',
@@ -9,6 +9,7 @@ import { ContextMenuComponent } from 'ngx-contextmenu';
 })
 export class FileItemComponent implements OnInit {
   faFolder = faFolder;
+  faFile = faFile;
   @Input() file: File;
   @Output() OnItemClick = new EventEmitter<File>();
   @ViewChild('Pasta') public PastaMenu: ContextMenuComponent;
@@ -20,6 +21,7 @@ export class FileItemComponent implements OnInit {
   }
 
   itemClick() {
+    console.log(this.file);
     this.OnItemClick.emit(this.file);
   }
 }

@@ -1,4 +1,5 @@
-<div (click)="itemClick()" [contextMenu]="basicMenu">
+
+<div *ngIf="!file.isFile; else elseBlock" [contextMenu]="file.isFile ? PastaMenu:ArquivoMenu" (click)="itemClick()">
   <div class="row justify-content-center">
     <fa-icon class="folderIcon" [icon]="faFolder"></fa-icon>
   </div>
@@ -6,6 +7,19 @@
     <a>{{file.name}}</a>
   </div>
 </div>
+
+<ng-template #elseBlock>
+  <div>
+    <div class="row justify-content-center">
+      <fa-icon class="folderIcon" [icon]="faFile"></fa-icon>
+    </div>
+    <div class="row justify-content-center">
+      <a>{{file.name}}</a>
+    </div>
+  </div>
+</ng-template>
+
+
 <context-menu #Arquivo>
   <ng-template contextMenuItem>
     Item Opção 1
@@ -25,3 +39,5 @@
     Item Opção 4
   </ng-template>
 </context-menu>
+
+

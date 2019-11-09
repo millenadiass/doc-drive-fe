@@ -23,38 +23,52 @@ export class FolderService extends BaseService {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', `Bearer ${this.userService.getAuthToken()}`)
     return this.http
-      .get<Array<Folder>>(`${this.baseUrl}/Folder/root`, { headers: headers })
+      .get<any>(`${this.baseUrl}/Directory/root`, { headers: headers })
       .pipe(map(data => {
         let lstFolder = new Array<Folder>();
         if (data) {
-          data.forEach(Genericfolder => {
+          data.folders.forEach(Genericfolder => {
             let folder = new Folder();
             Object.assign(folder, Genericfolder);
+            folder.isFile = false;
+            lstFolder.push(folder);
+          });
+          data.files.forEach(Genericfolder => {
+            let folder = new Folder();
+            Object.assign(folder, Genericfolder);
+            folder.isFile = true;
             lstFolder.push(folder);
           })
         }
         return lstFolder;
-      }), catchError(this.handleError))
+      }))
   }
 
   listarPastasFilhas(pFolderId: number) {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', `Bearer ${this.userService.getAuthToken()}`)
     return this.http
-      .get<Array<Folder>>(`${this.baseUrl}/Folder/${pFolderId}/children`, { headers: headers })
+      .get<any>(`${this.baseUrl}/Directory/${pFolderId}/children`, { headers: headers })
       .pipe(
         map(data => {
           let lstFolder = new Array<Folder>();
           if (data) {
-            data.forEach(Genericfolder => {
+            data.folders.forEach(Genericfolder => {
               let folder = new Folder();
               Object.assign(folder, Genericfolder);
+              folder.isFile = false;
+              lstFolder.push(folder);
+            });
+            data.files.forEach(Genericfolder => {
+              let folder = new Folder();
+              Object.assign(folder, Genericfolder);
+              folder.isFile = true;
               lstFolder.push(folder);
             })
           }
           return lstFolder;
-        }),
-        catchError(this.handleError))
+        }))
+        
   }
 
 }

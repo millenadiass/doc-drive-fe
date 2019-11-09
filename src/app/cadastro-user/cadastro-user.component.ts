@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { faCloud } from '@fortawesome/free-solid-svg-icons';
 
 import { UserService } from '../shared/services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastro-user',
@@ -25,7 +26,20 @@ export class CadastroUserComponent {
       .toPromise().then(result => {
         if (result)
           this.router.navigate(["/login"]);
-      }).catch(error => alert(error));
+      }).catch(error => {
+        console.log(error)
+        if (error instanceof HttpErrorResponse) {
+          if (error.status >= 400 && error.status < 500) {
+            if (error.error)
+              if (error.error.DuplicateUserName)
+                alert("E-mail já cadastrado.")
+              else
+                alert(error.message);
+          }
+          else
+            alert(error.message);
+        }
+      });
 
   }
 

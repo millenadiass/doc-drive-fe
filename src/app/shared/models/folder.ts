@@ -4,6 +4,7 @@ export class Folder {
     public id: number;
     public name: string;
     public parentId?: number;
+    public isFile: boolean;
 
     public toFileModel() {
         let file = new File();
@@ -11,6 +12,7 @@ export class Folder {
         file.isFile = false;
         file.name = this.name;
         file.parentId = this.parentId;
+        file.isFile = this.isFile;
         return file;
     }
 }
