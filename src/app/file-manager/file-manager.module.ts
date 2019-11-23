@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FileListComponent } from './file-list/file-list.component';
 import { FileItemComponent } from './file-item/file-item.component';
 import { ContextMenuModule } from 'ngx-contextmenu';
+import { ngfModule } from "angular-file";
 
 @NgModule({
   declarations: [FileManagerComponent, FileListComponent, FileItemComponent],
@@ -12,6 +13,7 @@ import { ContextMenuModule } from 'ngx-contextmenu';
     CommonModule,
     FontAwesomeModule,
     ContextMenuModule.forRoot(),
+    ngfModule
   ],
   exports: [
     FileManagerComponent

@@ -10,6 +10,9 @@ export class FileListComponent implements OnInit {
 
   @Input() files: Array<File>;
   @Output() OnItemClick = new EventEmitter<File>();
+  @Output() OnItemDeleted = new EventEmitter<File>();
+  @Output() OnItemModified = new EventEmitter<File>();
+
   constructor() { }
 
   ngOnInit() {
@@ -17,5 +20,13 @@ export class FileListComponent implements OnInit {
 
   itemClick(file: File) {
     this.OnItemClick.emit(file);
+  }
+
+  ItemDeleted(file: File) {
+    this.OnItemDeleted.emit(file);
+  }
+
+  ItemModified(file : File){
+    this.OnItemModified.emit(file);
   }
 }

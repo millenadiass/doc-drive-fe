@@ -1,5 +1,5 @@
 
-<div *ngIf="!file.isFile; else elseBlock" [contextMenu]="PastaMenu" (click)="itemClick()">
+<div *ngIf="!file.isFile; else elseBlock" [contextMenu]="PastaMenu" [contextMenuSubject]="file" (click)="itemClick()">
   <div class="row justify-content-center">
     <fa-icon class="folderIcon" [icon]="faFolder"></fa-icon>
   </div>
@@ -21,16 +21,16 @@
 
 
 <context-menu #Arquivo>
-  <ng-template contextMenuItem>
+  <ng-template contextMenuItem >
    Download
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem>
+  <ng-template contextMenuItem let-file (execute)="excluirArquivo(file)" >
       Excluir
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem>
-      Renomear
+  <ng-template contextMenuItem let-file passive="true">
+      Renomear: <input type="text" (keydown.enter)="renomearItem($event, file)">
   </ng-template>
 </context-menu>
 
@@ -39,12 +39,12 @@
     Abrir
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem>
+  <ng-template contextMenuItem let-file (execute)="excluirPasta(file)">
     Excluir 
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem>
-    Renomear
+  <ng-template contextMenuItem passive="true" let-file>
+    Renomear: <input type="text" (keydown.enter)="renomearItem($event, file)">
   </ng-template>
 </context-menu>
 

@@ -7,19 +7,19 @@
         </div>
       </div>
     </div>
-    <div class="row" app-file-list [files]="files" (OnItemClick)="itemClick($event)">
+    <div class="row" app-file-list [files]="files" (OnItemClick)="itemClick($event)" (OnItemDeleted)="itemDeleted($event)">
     </div>
   </div>
 </div>
 
 
 <context-menu>
-  <ng-template contextMenuItem>
-      Criar Pasta
+  <ng-template contextMenuItem passive="true">
+    Criar Pasta: <input type="text" (keydown.enter)="criarPasta($event)">
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem>
-      Upload
+  <ng-template contextMenuItem passive="true">
+    <div ngfSelect (fileChange)="onFileChange($event)"> Upload</div>
   </ng-template>
 </context-menu>
 

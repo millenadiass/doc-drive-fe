@@ -71,4 +71,27 @@ export class FolderService extends BaseService {
         
   }
 
+  criarPasta(nomePasta : string, parentId : number){
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', `Bearer ${this.userService.getAuthToken()}`)
+    let body = JSON.stringify({Name : nomePasta, ParentId : parentId})
+    return this.http
+    .post<any>(`${this.baseUrl}/Folder`, body, { headers: headers });
+  }
+
+  deleteFolder(id : number){
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', `Bearer ${this.userService.getAuthToken()}`);
+    return this.http
+    .delete(`${this.baseUrl}/folder/${id}`, { headers: headers });
+  }
+
+  renameFolder(FolderModel : Folder){
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', `Bearer ${this.userService.getAuthToken()}`);
+    let body = JSON.stringify({Name : FolderModel.name, ParentId : FolderModel.parentId })
+    return this.http
+    .put(`${this.baseUrl}/folder/${FolderModel.id}`, body, { headers: headers });
+  
+  }
 }

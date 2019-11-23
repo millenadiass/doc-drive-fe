@@ -15,7 +15,8 @@ export class HttpInterceptorService implements HttpInterceptor {
 
 		let curHeaders = request.headers;
 		curHeaders = curHeaders.append('Access-Control-Allow-Origin', '*');
-		curHeaders = curHeaders.append('Content-Type', 'application/json');
+		if (request.body && !(request.body instanceof FormData))
+			curHeaders = curHeaders.append('Content-Type', 'application/json');
 
 		request = request.clone({
 			headers: curHeaders
