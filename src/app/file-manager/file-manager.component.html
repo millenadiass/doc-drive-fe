@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div class="row" app-file-list [files]="files" (OnItemClick)="itemClick($event)" (OnItemDeleted)="itemDeleted($event)">
+    <div class="row" app-file-list [files]="files" (OnItemModified)="ItemModified($event)"  (OnItemClick)="itemClick($event)" (OnItemDeleted)="itemDeleted($event)">
     </div>
   </div>
 </div>
