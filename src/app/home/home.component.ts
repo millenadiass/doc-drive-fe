@@ -11,7 +11,7 @@ import { ContextMenuComponent } from 'ngx-contextmenu';
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild('fileManager',{static: false}) fileManager: FileManagerComponent;
+  @ViewChild('fileManager') fileManager: FileManagerComponent;
   lstFiles: Array<File>;
 
   constructor(private FolderServico: FolderService, private changeDetectorRef: ChangeDetectorRef) {

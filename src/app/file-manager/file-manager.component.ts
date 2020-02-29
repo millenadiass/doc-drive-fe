@@ -18,7 +18,7 @@ export class FileManagerComponent implements OnInit {
   @Input() parentFolder: FileModel;
   @Output() LoadChildren = new EventEmitter<FileModel>();
   @Output() LoadParent = new EventEmitter<FileModel>();
-  @ViewChild(ContextMenuComponent,{static: false}) public basicMenu: ContextMenuComponent;
+  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
   constructor(private fileService: FileService, private folderService: FolderService,private modalService: NgbModal) { }
 

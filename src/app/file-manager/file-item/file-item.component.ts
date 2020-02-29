@@ -17,8 +17,8 @@ export class FileItemComponent implements OnInit {
   @Output() OnItemClick = new EventEmitter<FileModel>();
   @Output() OnItemDeleted = new EventEmitter<FileModel>();
   @Output() OnItemModified = new EventEmitter<FileModel>();
-  @ViewChild('Pasta',{static: false}) public PastaMenu: ContextMenuComponent;
-  @ViewChild('Arquivo',{static: false}) public ArquivoMenu: ContextMenuComponent;
+  @ViewChild('Pasta') public PastaMenu: ContextMenuComponent;
+  @ViewChild('Arquivo') public ArquivoMenu: ContextMenuComponent;
 
   constructor(private fileService: FileService, private folderService: FolderService) { }
 
