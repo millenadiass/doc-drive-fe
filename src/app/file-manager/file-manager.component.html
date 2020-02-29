@@ -7,22 +7,49 @@
         </div>
       </div>
     </div>
-    <div class="row" app-file-list [files]="files" (OnItemModified)="ItemModified($event)"  (OnItemClick)="itemClick($event)" (OnItemDeleted)="itemDeleted($event)">
+    <div class="row" app-file-list [files]="files" (OnItemModified)="ItemModified($event)"
+      (OnItemClick)="itemClick($event)" (OnItemDeleted)="itemDeleted($event)">
     </div>
   </div>
 </div>
 
 
 <context-menu>
-  <ng-template contextMenuItem passive="true">
-    Criar Pasta: <input type="text" (keydown.enter)="criarPasta($event)">
+  <ng-template contextMenuItem (execute)="open(pastaModal)">
+    Criar Past
   </ng-template>
   <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem passive="true">
+  <ng-template contextMenuItem>
     <div ngfSelect (fileChange)="onFileChange($event)"> Upload</div>
   </ng-template>
 </context-menu>
 
 <ng-template #elseBlock style="padding: 10px;">
   <div style="padding: 10px;"> <span> Pastas e Arquivos</span></div>
+</ng-template>
+
+
+<ng-template #pastaModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <div class="form-group">
+            <label for="folderNameInput">Password</label>
+            <input type="text" class="form-control" #folderNameInput id="folderNameInput">
+          </div>         
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close(folderNameInput)">Save</button>
+  </div>
 </ng-template>

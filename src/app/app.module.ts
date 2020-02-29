@@ -17,7 +17,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { FileManagerModule } from './file-manager/file-manager.module';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import { FileManagerModule } from './file-manager/file-manager.module';
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
+    NgbModule,
     FileManagerModule, 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

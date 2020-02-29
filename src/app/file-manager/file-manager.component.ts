@@ -4,6 +4,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { ContextMenuComponent } from 'ngx-contextmenu';
 import { FileService } from '../shared/services/file.service';
 import { FolderService } from '../shared/services/folder.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-file-manager',
@@ -17,9 +18,9 @@ export class FileManagerComponent implements OnInit {
   @Input() parentFolder: FileModel;
   @Output() LoadChildren = new EventEmitter<FileModel>();
   @Output() LoadParent = new EventEmitter<FileModel>();
-  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
+  @ViewChild(ContextMenuComponent,{static: false}) public basicMenu: ContextMenuComponent;
 
-  constructor(private fileService: FileService, private folderService: FolderService) { }
+  constructor(private fileService: FileService, private folderService: FolderService,private modalService: NgbModal) { }
 
   ngOnInit() {
   }
@@ -52,7 +53,7 @@ export class FileManagerComponent implements OnInit {
 
   criarPasta(nomePasta : any){
     if(nomePasta.srcElement.value != null && nomePasta.srcElement.value != ""){
-        let id = this.parentFolder != null && this.parentFolder != undefined ? this.parentFolder.id : 0;
+        let id = this.parentFolder != null && this.parentFolder != undefined ? this.parentFolder.id : 1;
         this.folderService.criarPasta(nomePasta.srcElement.value, id)
         .toPromise().then(result => {
           let folder = new FileModel();
@@ -71,5 +72,11 @@ export class FileManagerComponent implements OnInit {
   itemModified(item : FileModel){
     let cdItem = this.files.findIndex(file => file.id == item.id);
     this.files[cdItem] = item;
+  }
+
+  open(content) {
+    this.modalService.open(content).result.then(result =>{
+      console.log(result);
+    });
   }
 }
